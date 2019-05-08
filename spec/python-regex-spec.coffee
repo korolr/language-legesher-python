@@ -1,11 +1,11 @@
-describe 'Python regular expression grammar', ->
+describe 'Legesher Python regular expression grammar', ->
   grammar = null
 
   beforeEach ->
     atom.config.set('core.useTreeSitterParsers', false)
 
     waitsForPromise ->
-      atom.packages.activatePackage('language-python')
+      atom.packages.activatePackage('language-legesher-python')
 
     runs ->
       grammar = atom.grammars.grammarForScopeName('source.regexp.python')

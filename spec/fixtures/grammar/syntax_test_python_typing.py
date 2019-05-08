@@ -1,11 +1,11 @@
 # SYNTAX TEST "source.python"
 
 
-def right_hand_split(
+{def} right_hand_split(
 # <- storage.type.function
 #   ^^^^^^^^^^^^^^^^ entity.name.function
 #                   ^ punctuation.definition.parameters.begin
-    line: Line, py36: bool = False, omit: Collection[LeafID] = ()
+    line: Line, py36: {bool} = {False}, omit: Collection[LeafID] = ()
 #   ^^^^ variable.parameter.function
 #       ^ punctuation.separator
 #         ^^^^ storage.type
@@ -20,4 +20,4 @@ def right_hand_split(
 #                                       ^ punctuation.separator
 ) -> Iterator[Line]:
 #                  ^ punctuation.definition.function.begin
-    pass
+    {pass}

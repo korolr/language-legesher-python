@@ -1,5 +1,5 @@
 'scopeName': 'source.python'
-'name': 'Python'
+'name': 'Legesher Python'
 'fileTypes': [
   'cpy'
   'gyp'
@@ -89,13 +89,13 @@
     'captures':
       '1':
         'name': 'storage.modifier.global.python'
-    'match': '\\b(global)\\b'
+    'match': '\\b({global})\\b'
   }
   {
     'captures':
       '1':
         'name': 'storage.modifier.nonlocal.python'
-    'match': '\\b(nonlocal)\\b'
+    'match': '\\b({nonlocal})\\b'
   }
   {
     'captures':
@@ -103,31 +103,31 @@
         'name': 'keyword.control.import.python'
       '2':
         'name': 'keyword.control.import.from.python'
-    'match': '\\b(?:(import)|(from))\\b'
+    'match': '\\b(?:({import})|({from}))\\b'
   }
   {
     'comment': 'keywords that delimit flow conditionals'
     'name': 'keyword.control.conditional.python'
-    'match': '\\b(if|elif|else)\\b'
+    'match': '\\b({if}|{elif}|{else})\\b'
   }
   {
     'comment': 'keywords that delimit an exception'
     'name': 'keyword.control.exception.python'
-    'match': '\\b(except|finally|try|raise)\\b'
+    'match': '\\b({except}|{finally}|{try}|{raise})\\b'
   }
   {
     'comment': 'keywords that delimit loops'
     'name': 'keyword.control.repeat.python'
-    'match': '\\b(for|while)\\b'
+    'match': '\\b({for}|{while})\\b'
   }
   {
     'comment': 'keywords that alter flow from within a block'
     'name': 'keyword.control.statement.python'
-    'match': '\\b(with|break|continue|pass|return|yield(\\s+from)?|await)\\b'
+    'match': '\\b({with}|{break}|{continue}|{pass}|{return}|{yield}(\\s+{from})?|{await})\\b'
   }
   {
     'comment': 'keyword operators that evaluate to True or False'
-    'match': '\\b(and|in|is|not|or)\\b'
+    'match': '\\b({and}|{in}|{is}|{not}|{or})\\b'
     'name': 'keyword.operator.logical.python'
   }
   {
@@ -135,7 +135,7 @@
       '1':
         'name': 'keyword.other.python'
     'comment': 'keywords that haven\'t fit into other groups (yet).'
-    'match': '\\b(as|assert|del|exec|print)\\b'
+    'match': '\\b({as}|{assert}|{del}|{exec}|{print})\\b'
   }
   {
     'match': '<>'
@@ -339,7 +339,7 @@
     ]
   }
   {
-    'begin': '\\b(lambda)\\b'
+    'begin': '\\b({lambda})\\b'
     'beginCaptures':
       '1':
         'name': 'storage.type.function.inline.python'
@@ -513,13 +513,13 @@
     'captures':
       '1':
         'name': 'storage.type.class.python'
-    'match': '\\b(class)\\b'
+    'match': '\\b({class})\\b'
   }
   {
     'include': '#line_continuation'
   }
   {
-    'match': '\\b(None|True|False|Ellipsis|NotImplemented)\\b'
+    'match': '\\b({None}|{True}|{False}|{Ellipsis}|{NotImplemented})\\b'
     'name': 'constant.language.python'
   }
   {
@@ -848,7 +848,7 @@
   'generic_names':
     'match': '[A-Za-z_][A-Za-z0-9_]*'
   'illegal_names':
-    'match': '\\b(and|as|assert|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|print|raise|return|try|while|with|yield|await)\\b'
+    'match': '\\b({and}|{as}|{assert}|{break}|{class}|{continue}|{def}|{del}|{elif}|{else}|{except}|{exec}|{finally}|{for}|{from}|{global}|{if}|{import}|{in}|{is}|{lambda}|{nonlocal}|{not}|{or}|{pass}|{print}|{raise}|{return}|{try}|{while}|{with}|{yield}|{await})\\b'
     'name': 'invalid.illegal.name.python'
   'keyword_arguments':
     'begin': '\\b([a-zA-Z_][a-zA-Z_0-9]*)\\s*(=)(?!=)'
@@ -867,7 +867,7 @@
       }
     ]
   'language_variables':
-    'match': '\\b(self|cls)\\b'
+    'match': '\\b({self}|{cls})\\b'
     'name': 'variable.language.self.python'
   'line_comments':
     'begin': '(^[ \\t]+)?(?=#)'

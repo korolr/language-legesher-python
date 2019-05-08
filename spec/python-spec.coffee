@@ -1,14 +1,14 @@
 path = require 'path'
 grammarTest = require 'atom-grammar-test'
 
-describe "Python grammar", ->
+describe "Legesher Python grammar", ->
   grammar = null
 
   beforeEach ->
     atom.config.set('core.useTreeSitterParsers', false)
 
     waitsForPromise ->
-      atom.packages.activatePackage("language-python")
+      atom.packages.activatePackage("language-legseher-python")
 
     runs ->
       grammar = atom.grammars.grammarForScopeName("source.python")
@@ -22,14 +22,14 @@ describe "Python grammar", ->
     expect(grammar.scopeName).toBe "source.python"
 
   it "tokenizes `yield`", ->
-    {tokens} = grammar.tokenizeLine 'yield v'
+    {tokens} = grammar.tokenizeLine '{yield} v'
 
-    expect(tokens[0]).toEqual value: 'yield', scopes: ['source.python', 'keyword.control.statement.python']
+    expect(tokens[0]).toEqual value: '{yield}', scopes: ['source.python', 'keyword.control.statement.python']
 
   it "tokenizes `yield from`", ->
-    {tokens} = grammar.tokenizeLine 'yield from v'
+    {tokens} = grammar.tokenizeLine '{yield} {from} v'
 
-    expect(tokens[0]).toEqual value: 'yield from', scopes: ['source.python', 'keyword.control.statement.python']
+    expect(tokens[0]).toEqual value: '{yield} {from}', scopes: ['source.python', 'keyword.control.statement.python']
 
   it "tokenizes multi-line strings", ->
     tokens = grammar.tokenizeLines('"1\\\n2"')
@@ -664,15 +664,15 @@ describe "Python grammar", ->
       for scope, delim in delimsByScope
         tokens = grammar.tokenizeLines(
           delim +
-          'SELECT bar
-          FROM foo'
+          '{SELECT} bar
+          {FROM} foo'
           + delim
         )
 
         expect(tokens[0][0]).toEqual value: delim, scopes: ['source.python', scope, 'punctuation.definition.string.begin.python']
-        expect(tokens[1][0]).toEqual value: 'SELECT', scopes: ['source.python', scope, 'meta.embedded.sql', 'keyword.other.DML.sql']
+        expect(tokens[1][0]).toEqual value: '{SELECT}', scopes: ['source.python', scope, 'meta.embedded.sql', 'keyword.other.DML.sql']
         expect(tokens[1][1]).toEqual value: ' bar', scopes: ['source.python', scope, 'meta.embedded.sql']
-        expect(tokens[2][0]).toEqual value: 'FROM', scopes: ['source.python', scope, 'meta.embedded.sql', 'keyword.other.DML.sql']
+        expect(tokens[2][0]).toEqual value: '{FROM}', scopes: ['source.python', scope, 'meta.embedded.sql', 'keyword.other.DML.sql']
         expect(tokens[2][1]).toEqual value ' foo', scopes: ['source.python', scope, 'meta.embedded.sql']
         expect(tokens[3][0]).toEqual value: delim, scopes: ['source.python', scope, 'punctuation.definition.string.end.python']
 
